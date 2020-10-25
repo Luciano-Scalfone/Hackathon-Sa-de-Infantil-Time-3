@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/AddForm.css';
 
 class List extends Component {
   constructor() {
@@ -55,11 +56,13 @@ class List extends Component {
         </label>
         <label htmlFor="peso">
           Peso (kg):
-            <input onChange={this.handleChange} required type="text" name="peso" placeholder="20" />
+            <input onChange={this.handleChange} required type="number"
+              name="peso" placeholder="Peso em kg" min="0" step=".1" />
         </label>
         <label htmlFor="altura">
           Altura (cm):
-            <input onChange={this.handleChange} required type="number" name="altura" placeholder="150" />
+            <input onChange={this.handleChange} required type="number"
+              name="altura" placeholder="altura em cm" min="0" step=".1" />
         </label>
         <button type="submit">Inserir Dados</button>
       </form>

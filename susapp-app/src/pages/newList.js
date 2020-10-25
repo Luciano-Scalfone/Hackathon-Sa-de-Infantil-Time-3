@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { AddForm, RenderLists } from '../components';
 
-class Home extends Component {
+class newList extends Component {
   render() {
     return (
       <div>
-        <Link to='/relatorios' className='links'>Relatórios</Link>
-        <Link to='/new-list' className='links'>Nova Lista</Link>
+        <AddForm />
+        <RenderLists />
         <Link to='/view-lists' className='links'>Ver Listas</Link>
+        <Link to='/' className='links'>Início</Link>
       </div>
     );
   }
 };
 
-export default Home;
+export default newList;

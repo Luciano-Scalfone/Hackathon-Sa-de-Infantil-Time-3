@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import List from './components/list';
-import SeeList from './components/seeList';
-import Home from './pages/Home';
+import { Home, Relatorios, viewLists, newList } from './pages';
 
 class App extends Component {
   constructor() {
@@ -38,8 +36,9 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path='/new-list' component={ List } />
-            <Route path='/see-list' component={ SeeList } />
+            <Route path='/relatorios' component={ Relatorios } />
+            <Route path='/new-list' component={ newList } />
+            <Route path='/view-lists' component={ viewLists } />
             <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
