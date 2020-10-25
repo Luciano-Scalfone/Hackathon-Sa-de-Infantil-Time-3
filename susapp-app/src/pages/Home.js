@@ -6,8 +6,8 @@ class Home extends Component {
     return (
       <div>
         <Link to='/relatorios' className='links'>Relatórios</Link>
-        <Link to='/new-list' className='links'>Nova Lista</Link>
         <Link to='/view-lists' className='links'>Ver Listas</Link>
+        <Link to='/new-list' className='links'>Nova Lista</Link>
       </div>
     );
   }

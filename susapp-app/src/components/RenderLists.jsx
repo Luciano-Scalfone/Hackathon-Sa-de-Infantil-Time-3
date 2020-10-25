@@ -7,7 +7,8 @@ class RenderLists extends Component {
       <div>
         <h2>Listas salvas</h2>
         {Object.keys(data).map((list) => {
-          return <p key="list.titulo">{list}</p>
+          console.log(list);
+          return <p key="list.titulo">{data[list].titulo}</p>
         })}
       </div>
     );
