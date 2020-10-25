@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Redirect, Route } from 'react-router-dom';
-import List from '../components/list';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h1>teste</h1>
-        <Link to='/new-list'>List</Link>
+        <Link to='/new-list'>Nova Lista</Link>
+        <Link to='/see-list'>Ver Lista</Link>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import List from './components/list';
+import SeeList from './components/seeList';
 import Home from './pages/Home';
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path='/new-list' component={ List } />
+            <Route path='/see-list' component={ SeeList } />
             <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
