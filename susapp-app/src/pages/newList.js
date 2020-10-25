@@ -9,7 +9,6 @@ class newList extends Component {
         <AddForm />
         <RenderLists />
         <Link to='/view-lists' className='links'>Ver Listas</Link>
-        <Link to='/' className='links'>Início</Link>
       </div>
     );
   }

@@ -6,8 +6,8 @@ class viewLists extends Component {
   render() {
     return (
       <div>
+        <Link to="/">Início</Link>
         <RenderLists />
-        <Link to="/">Voltar</Link>
       </div>
     );
   }

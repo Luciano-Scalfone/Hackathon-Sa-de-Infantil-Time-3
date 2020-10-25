@@ -10,7 +10,6 @@ class RenderLists extends Component {
           return <p key="list.titulo">{list}</p>
         })}
       </div>
-
     );
   }
 };
