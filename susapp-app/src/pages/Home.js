@@ -5,10 +5,10 @@ import List from '../components/list';
 class Home extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <div>
         <h1>teste</h1>
         <Link to='/new-list'>List</Link>
-      </BrowserRouter>
+      </div>
     );
   }
 };

@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path='/new-list' componet={ List } />
+            <Route path='/new-list' component={ List } />
             <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
