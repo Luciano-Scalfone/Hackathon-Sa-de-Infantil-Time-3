@@ -37,8 +37,8 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path='/relatorios' component={ Relatorios } />
-            <Route path='/new-list' component={ newList } />
             <Route path='/view-lists' component={ viewLists } />
+            <Route path='/new-list' component={ newList } />
             <Route path="/" component={ Home } />
           </Switch>
         </BrowserRouter>
