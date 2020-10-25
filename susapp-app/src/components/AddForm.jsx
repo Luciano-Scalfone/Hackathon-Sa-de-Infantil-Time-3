@@ -3,52 +3,42 @@ import { Link } from 'react-router-dom';
 import '../css/AddForm.css';
 
 class List extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      nome: "",
-      nomeDaMae: "",
-      idade: 0,
-      peso: 0,
-      altura: 0,
-      imc: 0,
-      cpf: 0,
-    };
+    this.handleCallBack = this.handleCallBack.bind(this);
   }
 
-  handleChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  };
+  handleCallBack(event) {
+    console.log(event.target.checkValidity());
+    const { handleAddChild } = this.props;
+    handleAddChild();
+    document.getElementById("add_child").reset();
+  }
 
   render() {
+    const { handleChange } = this.props;
+    const { handleCallBack } = this;
     return (
       <div>
         <Link to='/'>Início</Link>
-        <form>
-          <label htmlFor="nomeDaMae">
-            Nome da Mãe:
-              <input onChange={this.handleChange} type="text" name="nomeDaMae" placeholder="Maria Luiza dos Santos" />
+        <form id="add_child">
+          <label htmlFor="nomeDaCrianca">
+            Nome da Criança
+              <input onChange={handleChange} required type="text" name="nomeDaCrianca" placeholder="Luiza dos Santos Pereira" />
           </label>
-          <label htmlFor="criança">
-            Nome da Criança:
-              <input onChange={this.handleChange} required type="text" name="criança" placeholder="Luiza dos Santos Pereira" />
+          <label htmlFor="nomeDaMae">
+            Nome da Mãe (opcional)
+              <input onChange={handleChange} type="text" name="nomeDaMae" placeholder="Maria Luiza dos Santos" />
           </label>
           <label htmlFor="genero">
-            Sexo:
-              <input onChange={this.handleChange} required type="radio" value="feminino" name="genero" />Feminino
-              <input onChange={this.handleChange} required type="radio" value="masculino" name="genero" />Masculino
+            Sexo
+              <input onChange={handleChange} required type="radio" value="feminino" name="genero" />Feminino
+              <input onChange={handleChange} required type="radio" value="masculino" name="genero" />Masculino
             </label>
           <label htmlFor="cor">
-            Cor:
-              <select onChange={this.handleChange} required name="cor">
+            Cor/raça
+              <select onChange={handleChange} required name="cor">
               <option value="selecione">Selecione</option>
               <option value="branca">Branca</option>
               <option value="preta">Preta</option>
@@ -58,24 +48,24 @@ class List extends Component {
             </select>
           </label>
           <label htmlFor="cpf">
-            CPF/CNS:
-              <input onChange={this.handleChange} required type="text" name="cpf" placeholder="123.456.789-00" />
+            CPF/CNS
+              <input onChange={handleChange} required type="text" name="cpf" placeholder="123.456.789-00" />
           </label>
           <label htmlFor="nascimento">
-            Data de nascimento:
-              <input onChange={this.handleChange} required name="nascimento" placeholder="01/01/2001" />
+            Data de nascimento
+              <input onChange={handleChange} required name="nascimento" placeholder="01/01/2001" />
           </label>
           <label htmlFor="peso">
-            Peso (kg):
-              <input onChange={this.handleChange} required type="number"
+            Peso (kg)
+              <input onChange={handleChange} required type="number"
               name="peso" placeholder="Peso em kg" min="0" step=".1" />
           </label>
           <label htmlFor="altura">
-            Altura (cm):
-              <input onChange={this.handleChange} required type="number"
+            Altura (cm)
+              <input onChange={handleChange} required type="number"
               name="altura" placeholder="altura em cm" min="0" step=".1" />
           </label>
-          <button type="submit">Inserir Dados</button>
+          <button type="submit" onClick={ handleCallBack }>Inserir Dados</button>
         </form>
       </div>
     );

@@ -5,7 +5,7 @@ const Data = {
     dados: [
       {
         id: 1,
-        nome: "Luciano",
+        nomeDaCrianca: "Luciano",
         nomeDaMae: "Mãe do Luciano",
         cor: "Preta",
         genero: "Masculino",
@@ -18,7 +18,7 @@ const Data = {
       },
       {
         id: 2,
-        nome: "Daniel",
+        nomeDaCrianca: "Daniel",
         nomeDaMae: "Mãe do Daniel",
         cor: "Branca",
         genero: "Masculino",
@@ -31,7 +31,7 @@ const Data = {
       },
       {
         id: 3,
-        nome: "Juliana",
+        nomeDaCrianca: "Juliana",
         nomeDaMae: "Mãe da Juliana",
         cor: "Branca",
         genero: "Feminino",

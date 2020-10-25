@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import { Home, Relatorios, viewLists, newList } from './pages';
+import { Home, Relatorios, viewLists, newList, newListTitle } from './pages';
 
 class App extends Component {
   constructor() {
@@ -38,6 +38,7 @@ class App extends Component {
           <Switch>
             <Route path='/relatorios' component={ Relatorios } />
             <Route path='/view-lists' component={ viewLists } />
+            <Route path='/new-list-title' component={ newListTitle } />
             <Route path='/new-list' component={ newList } />
             <Route path="/" component={ Home } />
           </Switch>

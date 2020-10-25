@@ -7,7 +7,7 @@ class Home extends Component {
       <div>
         <Link to='/relatorios' className='links'>Relatórios</Link>
         <Link to='/view-lists' className='links'>Ver Listas</Link>
-        <Link to='/new-list' className='links'>Nova Lista</Link>
+        <Link to='/new-list-title' className='links'>Nova Lista</Link>
       </div>
     );
   }
