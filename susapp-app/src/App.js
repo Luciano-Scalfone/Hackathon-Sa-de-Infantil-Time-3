@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+<<<<<<< HEAD
 import { Home, Relatorios, viewLists, newList, newListTitle } from './pages';
+=======
+import { Home, Relatorios, viewLists, newList } from './pages';
+import Login from './pages/Login';
+>>>>>>> ce8e4e5be2c13f881ee409480dc10243c9b199c7
 
 class App extends Component {
   constructor() {
     super();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-
     this.state = {
-      login: '',
-      senha: '',
+      verification: false,
     };
-  }
+  };
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
+  componentDidMount() {
+    this.setState({verification: false}, () => {
+      const verification = localStorage.getItem('verification');
 
-    this.setState({
-      [name]: value,
+      this.setState({
+        verification: verification === undefined ? false : verification,
+      });
     });
   };
 
-  handleClick = () => {
-    const { senha, login } = this.state;
-    login === 'juFiuza' && senha === '123456' ?
-      alert('Tudo certo') :
-      alert('Nome de usuário ou senha inválidos');
-  };
-
   render() {
-    return (
-      <div className="App">
+    const { verification } = this.state;
+
+    if(!verification) {
+      return (
         <BrowserRouter>
+<<<<<<< HEAD
           <Switch>
             <Route path='/relatorios' component={ Relatorios } />
             <Route path='/view-lists' component={ viewLists } />
@@ -42,18 +41,27 @@ class App extends Component {
             <Route path='/new-list' component={ newList } />
             <Route path="/" component={ Home } />
           </Switch>
+=======
+           <Login />
+>>>>>>> ce8e4e5be2c13f881ee409480dc10243c9b199c7
         </BrowserRouter>
-        {/* <label htmlFor="login">
-          Nome de Usuário:
-            <input required name="login" placeHolder="Fulano de Tal" onChange={this.handleChange} />
-        </label>
-        <label htmlFor="senha">
-          Senha:
-            <input required name="senha" placeHolder="senha" onChange={this.handleChange} />
-        </label>
-        <input type="button" value="Criar Lista" onClick={this.handleClick} /> */}
-      </div>
-    );
+      )
+    }
+    else {
+      return (
+        <div className="App">
+          <BrowserRouter>
+            <Switch>
+              <Route path='/login' component={Login} />
+              <Route path='/relatorios' component={Relatorios} />
+              <Route path='/view-lists' component={viewLists} />
+              <Route path='/new-list' component={newList} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      );
+    }
   }
 }
 
