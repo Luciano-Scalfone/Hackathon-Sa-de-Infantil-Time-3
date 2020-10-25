@@ -34,7 +34,7 @@ const Data = {
         nomeDaCrianca: "Juliana",
         nomeDaMae: "Mãe da Juliana",
         cor: "Branca",
-        genero: "Feminino",
+        sexo: "Feminino",
         idade: 11,
         peso: 33,
         altura: 109,

@@ -22,7 +22,6 @@ class App extends Component {
       this.setState({
         verification: verification === undefined ? false : verification,
       });
-      console.log(this.state.verification);
     });
   };
 

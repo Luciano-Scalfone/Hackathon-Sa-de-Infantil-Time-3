@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import data from '../data/data';
 
 class newListTitle extends Component {
   constructor(props) {
@@ -12,6 +13,18 @@ class newListTitle extends Component {
 
   handleClick() {
     const title = document.getElementById('title-input').value;
+
+    const newDate = new Date();
+    const today = `${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}`;
+    const currentData = !localStorage.getItem('data') ? data : JSON.parse(localStorage.getItem('data'));
+    
+    localStorage.setItem('data', JSON.stringify({...currentData , [title]: {
+        titulo: title,
+        data: today,
+        dados: [],
+      }})
+    );
+
     if (title) this.setState({ title });
   }
 

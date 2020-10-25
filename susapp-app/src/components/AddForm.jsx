@@ -33,11 +33,11 @@ class List extends Component {
           </label>
           <label htmlFor="genero">
             Sexo
-              <input onChange={handleChange} required type="radio" value="feminino" name="genero" />Feminino
-              <input onChange={handleChange} required type="radio" value="masculino" name="genero" />Masculino
+              <input onChange={handleChange} required type="radio" value="feminino" name="sexo" />Feminino
+              <input onChange={handleChange} required type="radio" value="masculino" name="sexo" />Masculino
             </label>
           <label htmlFor="cor">
-            Cor/raça
+            Cor/Raça
               <select onChange={handleChange} required name="cor">
               <option value="selecione">Selecione</option>
               <option value="branca">Branca</option>
@@ -51,9 +51,9 @@ class List extends Component {
             CPF/CNS
               <input onChange={handleChange} required type="text" name="cpf" placeholder="123.456.789-00" />
           </label>
-          <label htmlFor="nascimento">
-            Data de nascimento
-              <input onChange={handleChange} required name="nascimento" placeholder="01/01/2001" />
+          <label htmlFor="idade">
+            Idade
+              <input onChange={handleChange} required name="idade" placeholder="01/01/2001" />
           </label>
           <label htmlFor="peso">
             Peso (kg)
