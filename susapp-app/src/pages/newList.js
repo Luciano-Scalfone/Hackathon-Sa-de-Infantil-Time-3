@@ -7,7 +7,6 @@ class newList extends Component {
     super(props);
 
     this.state = {
-      currentListData: [],
       currentChild: {},
       listTitle: this.props.location.state.title,
     }
@@ -27,48 +26,85 @@ class newList extends Component {
     });
   };
 
-  async handleAddChild() {
-    const { currentChild } = this.state;
+  handleAddChild() {
+    const { currentChild, listTitle } = this.state;
+    let validity;
+
     if (Object.keys(currentChild).length === 0) {
       console.log('currentChild vazio');
     } else {
-      await this.setState((prevState) => {
-        return {
-          ...prevState,
-          currentListData: [ ...prevState.currentListData, currentChild ],
-          currentChild: {}, };
+      const form = document.querySelectorAll('input');
+      validity = Array.from(form).every(element => element.checkValidity());
+    }
+
+    const imc = Math.round(currentChild.peso / ((currentChild.altura/100)**2) * 100) / 100;
+    let signal;
+    
+    switch (true) {
+      case (imc < 18.5):
+        signal = 0;
+        break;
+      case (imc < 24.9):
+        signal = 1;
+        break;
+      case (imc < 29.9):
+        signal = 2;
+        break;
+      case (imc < 39.9):
+        signal = 3;
+        break;
+      case (imc >= 39.9):
+        signal = 4;
+        break;
+      default:
+        break;
+    };
+
+    if (validity) {
+      const data = JSON.parse(localStorage.getItem('data'));
+      const child = {...currentChild, imc, signal,}
+      
+      data[listTitle].dados.push(child);
+      localStorage.setItem('data', JSON.stringify(data));
+      
+      this.setState({
+        currentChild: {},
       });
     }
-  }
+  };
 
   render() {
-    const { currentListData } = this.state;
+    const { listTitle } = this.state;
+    const { [listTitle]: { dados } } = JSON.parse(localStorage.getItem('data'));
     const { handleChange, handleAddChild } = this;
-    const currentList = (currentListData.length > 0)
+    const currentList = (dados.length > 0)
       ? (
-          <table>
-            <th>Nome</th>
-            <th>Nome da mãe</th>
-            <th>Peso</th>
-            <th>Altura</th>
-            {
-              currentListData.map((crianca) => {
-                return (
-                  <tr>
-                    <td>{ crianca.nomeDaCrianca }</td>
-                    <td>{ crianca.nomeDaMae }</td>
-                    <td>{ crianca.peso }</td>
-                    <td>{ crianca.altura }</td>
-                  </tr>
-                )}
-              )}
-          </table>
-        )
+        <table>
+          <th>Nome</th>
+          <th>Nome da mãe</th>
+          <th>Peso</th>
+          <th>Altura</th>
+          <th>IMC</th>
+          {
+            dados.map((crianca) => {
+              return (
+                <tr>
+                  <td>{crianca.nomeDaCrianca}</td>
+                  <td>{crianca.nomeDaMae}</td>
+                  <td>{crianca.peso}</td>
+                  <td>{crianca.altura}</td>
+                  <td>{crianca.imc}</td>
+                </tr>
+              )
+            }
+            )}
+        </table>
+      )
       : <div>Adicione pessoas.</div>;
     return (
       <div>
-        <h1>{ this.state.listTitle }</h1>
-        <AddForm handleChange={ handleChange } handleAddChild={ handleAddChild } />
+        <h1>{this.state.listTitle}</h1>
+        <AddForm handleChange={handleChange} handleAddChild={handleAddChild} />
         <div>
           {currentList}
         </div>

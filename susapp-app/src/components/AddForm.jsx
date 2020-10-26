@@ -10,7 +10,7 @@ class List extends Component {
   }
 
   handleCallBack(event) {
-    console.log(event.target.checkValidity());
+    // console.log(event.target.checkValidity());
     const { handleAddChild } = this.props;
     handleAddChild();
     document.getElementById("add_child").reset();
@@ -53,7 +53,7 @@ class List extends Component {
           </label>
           <label htmlFor="idade">
             Idade
-              <input onChange={handleChange} required name="idade" placeholder="01/01/2001" />
+              <input onChange={handleChange} required type="number" name="idade" placeholder="10" />
           </label>
           <label htmlFor="peso">
             Peso (kg)
